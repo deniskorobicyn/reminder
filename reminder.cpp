@@ -29,11 +29,20 @@ void Reminder::remove(QString person) {
   m_file.close();
 }
 
-void Reminder::show() {
+void Reminder::show(int days) {
   m_file.open(QIODevice::ReadOnly);
   QTextStream stream(&m_file);
+  QDate current_date = QDate::currentDate();
+
   while (!stream.atEnd()) {
-    std::cout << stream.readLine().toUtf8().constData() << std::endl;
+    Record r(stream.readLine());
+
+    if(!r.valid())
+      continue;
+
+    if (abs(current_date.dayOfYear() - r.birthday().dayOfYear()) < days) {
+      std::cout << r.line().toUtf8().constData() << std::endl;
+    }
   }
   m_file.close();
 }

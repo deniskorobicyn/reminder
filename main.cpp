@@ -36,6 +36,12 @@ int main(int argc, char* argv[]) {
           "Add record to database,\n example: reminder -r \"john smith\""));
   parser.addOption(remove);
 
+  QCommandLineOption days(
+      "n", QCoreApplication::translate(
+               "main",
+               "Show birthdays for next n days, \n example: reminder -n 40"));
+  parser.addOption(days);
+
   parser.process(app);
 
   if (parser.isSet(addition)) {
@@ -51,7 +57,15 @@ int main(int argc, char* argv[]) {
       reminder.remove(args.at(0));
 
     } else {
-      reminder.show();
+      if(parser.isSet(days)){
+          const QStringList args = parser.positionalArguments();
+
+          reminder.show(args.at(0).toInt());
+      }
+      else{
+          parser.showHelp();
+      }
+
     }
   }
 

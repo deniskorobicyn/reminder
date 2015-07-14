@@ -13,7 +13,7 @@ class Reminder {
   Reminder(QString);
   void add(Record);
   void remove(QString);
-  void show();
+  void show(int);
   ~Reminder();
 
  private:

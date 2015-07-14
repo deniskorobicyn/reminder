@@ -12,12 +12,15 @@ class Record {
   friend QTextStream& operator<<(QTextStream& out, const Record& record);
 
  public:
-  Record(const QString&, const QString&);
+  Record(QString);
+  Record(QString, QString);
 
   QString name() const;
-  QString birthday() const;
+  QDate birthday() const;
 
-  QString line();
+  bool valid() const;
+
+  QString line() const;
 };
 
 QTextStream& operator<<(QTextStream& out, const Record& record);

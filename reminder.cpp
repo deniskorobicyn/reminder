@@ -30,12 +30,12 @@ void Reminder::remove(QString person) {
 }
 
 void Reminder::show() {
-    m_file.open(QIODevice::ReadOnly);
-    QTextStream stream(&m_file);
-    while (!stream.atEnd()) {
-        std::cout << stream.readLine().toUtf8().constData() << std::endl;
-    }
-    m_file.close();
+  m_file.open(QIODevice::ReadOnly);
+  QTextStream stream(&m_file);
+  while (!stream.atEnd()) {
+    std::cout << stream.readLine().toUtf8().constData() << std::endl;
+  }
+  m_file.close();
 }
 
 Reminder::~Reminder() {

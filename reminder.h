@@ -10,7 +10,6 @@ class Reminder {
   QFile m_file;
 
  public:
-
   Reminder(QString);
   void add(Record);
   void remove(QString);

@@ -10,7 +10,6 @@ class Reminder {
   QFile m_file;
 
  public:
-  enum Flags { Read, Write };
 
   Reminder(QString);
   void add(Record);
